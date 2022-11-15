@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+
+body {
+  font-family: 'Press Start 2P', sans-serif;
+  color: #eee;
+  background-color:#011627;
+  overflow: hidden;
+  height: 100vh;
+  /* background-color: #60b347; */
+}
+
+/* LAYOUT */
+header {
+  position: relative;
+  border-bottom: 5px solid #eee;
+}
+
+main {
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#countdown-container {
+  font-size: 4vh;
+  display: inline-block;
+  width: 300px;
+  margin: 20px 0;
+  border-radius: 5px;
+  background: #1d81af;
+}
+.countdown {
+  display: inline-block;
+  padding: 20px;
+  background: #1d81af;
+  color: white;
+}
+.countdown span {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.btn {
+  color: #000;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: inherit;
+  padding: 2rem 3rem;
+  cursor: pointer;
+  display: block;
+  margin: 50px auto;
+  border-radius: 10px;
+}
+.btn:hover {
+  background: #000;
+  color: #ccc;
+}
+
+.input {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em;
+  align-items: center;
+  
+
+}
+
+.qns {
+  padding: 25px;
+  font-size: 2rem;
+}
+
+.input2 {
+  padding: 3em;
+  /* border: 1px solid grey; */
+  margin-right: 5em;
+  width: 10em;
+  font-size: 2.5rem;
+}
+.input1 {
+  width: 10em;
+  font-size: 2rem;
+  font-family: 'Press Start 2P', sans-serif;
+  display: block;
+  padding: 3em;
+  border: 1px solid grey;
+  margin-right: 5em;
+  border-radius: 20px;
+}
+
+.result {
+  background: #eee;
+  color: #333;
+  width: 10em;
+  font-size: 2rem;
+  font-family: 'Press Start 2P', sans-serif;
+  display: block;
+  padding: 3em;
+  border: 1px solid grey;
+  margin-right: 5em;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.next {
+  display: inline-block;
+  padding: 20px;
+  background: #1d81af;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold; /*boldens text in the span element*/
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+}
+main button {
+  font-size: 5vh;
+  display: inline-block;
+}
+
+.right {
+  width: 52rem;
+  font-size: 2rem;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+
+
+.operator{
+  font-size: 20px;
+}
