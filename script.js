@@ -1,5 +1,8 @@
 'use strict';
 
+let ops = document.querySelector('.operator').textContent;
+let diff = document.querySelector('.input1').textContent;
+
 //*SET GAME LOGIC TIMER
 let minutes = 0; // starting number of minutes
 let seconds = 59; // starting number of seconds
@@ -46,7 +49,7 @@ setTimeout(function () {
   document.querySelector('.countdown').style.color = 'darkred';
 }, 50400);
 
-//*Set default values
+//?Set default values
 
 //*input1
 let box1 = document.querySelector('.input1').value;
@@ -82,49 +85,31 @@ const displayMessage = function (message) {
 //* GAME LOGIC
 var score = 3;
 var highscore = 0;
-document.querySelector('.highscore').textContent= highscore;
+document.querySelector('.highscore').textContent = highscore;
 document.querySelector('.score').textContent = score;
 let anyLuck = document
   .querySelector('.number')
   .addEventListener('click', function () {
-     
-     document.querySelector('.score').textContent = highscore;
-    const diff = secretNumber - box2;
-    document.querySelector('.input1').value;
+    document.querySelector('.score').textContent = highscore;
 
     let guess = Number(document.querySelector('.input1').value);
     //console.log(guess, typeof guess);
     //*IF NO NUMBER WAS INPUTED
     if (!guess) {
       displayMessage('⛔No Number!');
-       document.querySelector('.right').textContent;
-        document.querySelector('.right').style.backgroundColor = 'darkred';
-  
+      document.querySelector('.right').textContent;
+      document.querySelector('.right').style.backgroundColor = 'darkred';
+
       //*IF THE CORRECT NUMBER WAS INPUTTED
     } else if (guess === diff) {
-      
-      highscore += 2 
+      highscore += 2;
       document.querySelector('.highscore').textContent = highscore;
       displayMessage('Correct Number!👏 Next Question');
-       document.querySelector('.input1').textContent = diff;
-      document.querySelector('body').style.backgroundColor ='#60b347';
+      document.querySelector('.input1').textContent = diff;
+      document.querySelector('body').style.backgroundColor = '#60b347';
       document.querySelector('.result').style.width = '20em';
       document.querySelector('.right').style.backgroundColor = '#60b347';
-      let next = document
-        .querySelector('.next')
-        .addEventListener('click', function () {
-          displayMessage("You're almost there...🏃‍♂️⏳")
-          document.querySelector('.input1').value = box1;
-          box2 = Math.trunc(Math.random() * 20) + 1;
-          document.querySelector('.input2').textContent = box2;
-          secretNumber = generateRandom();
-          document.querySelector('.result').textContent = secretNumber;
-          let operate = selectRandomOperator();
-          document.getElementsByClassName('operator').textContent = operate;
-          document.querySelector('body').style.backgroundColor = '#011627'
-          document.querySelector('.right').style.backgroundColor = '#011627';
-    
-  });
+
       //^SCORE VALUES WHEN CORRECT NUMBER IS INSERTED
 
       //*WHEN GUESS IS WRONG
@@ -134,35 +119,51 @@ let anyLuck = document
         document.querySelector('.score').textContent = score;
 
         displayMessage('❌Wrong anwser!,Try again😔');
-        
-        document.querySelector('.right').style.backgroundColor = 'darkred';
 
+        document.querySelector('.right').style.backgroundColor = 'darkred';
       } else {
         displayMessage(' 💥You lost the game!');
         document.querySelector('.score').textContent = score;
-        
       }
     }
   });
 
-const selectRandomOperator = () => {
-  let oprandArr = ['+', '-', '*'];
-  let randomOprand = oprandArr[Math.floor(Math.random() * oprandArr.length)];
-  return randomOprand;
+var operators = ['/', '+', '-', '*'];
 
-  // switch (randomOprand) {
-  //   case '+':
-  //     if (box1 < box2) return box1 + box2;
-  //   case '-':
-  //     if (box1 > box2) return box1 - box2;
-  //   case '*':
-  //     return box1 * box2;
-  //   default:
-  //     return 'enter a valid number';
-};
-let operate = selectRandomOperator();
+var selectedOperator = Math.floor(Math.random() * operators.length);
+var operator = operators[selectedOperator];
 
-document.getElementsByClassName('operator').textContent = operate;
+console.log(operator);
+document.querySelector('.operator').textContent = operator;
+function dos() {
+  if (operator === '-') {
+    diff = secretNumber + box2;
+  } else if (operator === '+') {
+    diff = secretNumber - box2;
+  } else if (operator === '*' && secretNumber % box2 === 0) {
+    console.log(secretNumber % box2);
+    diff = secretNumber / box2;
+  } else {
+    if (secretNumber % box2 === 0) {
+      diff = secretNumber * box2;
+    }
+  }
+}
+document.querySelector('.input1').value = dos();
 
 //*When the NEXT button is clicked
 
+let next = document
+  .querySelector('.next')
+  .addEventListener('click', function () {
+    displayMessage("You're almost there...🏃‍♂️⏳");
+    document.querySelector('.input1').value = box1;
+    box2 = Math.trunc(Math.random() * 20) + 1;
+    document.querySelector('.input2').textContent = box2;
+    secretNumber = generateRandom();
+    document.querySelector('.result').textContent = secretNumber;
+    document.querySelector('body').style.backgroundColor = '#011627';
+    document.querySelector('.right').style.backgroundColor = '#011627';
+    document.querySelector('.input1').value = dos();
+    document.querySelector('.operator').textContent = operator;
+  });
